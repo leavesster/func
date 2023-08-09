@@ -23,7 +23,7 @@ func NewBuildCmd(newClient ClientFactory) *cobra.Command {
 		Short: "Build a function container",
 		Long: `
 NAME
-	{{rootCmdUse}} build - Build a function container locally withoud deploying
+	{{rootCmdUse}} build - Build a function container locally without deploying
 
 SYNOPSIS
 	{{rootCmdUse}} build [-r|--registry] [--builder] [--builder-image] [--push]
@@ -155,7 +155,7 @@ func runBuild(cmd *cobra.Command, _ []string, newClient ClientFactory) (err erro
 	}
 	f = cfg.Configure(f) // Updates f at path to include build request values
 
-	// TODO: this logic is duplicated with runDeploy.  Shouild be in buildConfig
+	// TODO: this logic is duplicated with runDeploy.  Should be in buildConfig
 	// constructor.
 	// Checks if there is a difference between defined registry and its value
 	// used as a prefix in the image tag In case of a mismatch a new image tag is
@@ -357,7 +357,7 @@ func (c buildConfig) Validate() (err error) {
 //
 // TODO: As a further optimization, it might be ideal to only build the
 // image necessary for the target cluster, since the end product of  a function
-// deployment is not the contiainer, but rather the running service.
+// deployment is not the container, but rather the running service.
 func (c buildConfig) clientOptions() ([]fn.Option, error) {
 	o := []fn.Option{fn.WithRegistry(c.Registry)}
 	if c.Builder == builders.Host {
